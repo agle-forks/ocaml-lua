@@ -379,7 +379,7 @@ value luaL_gsub__stub(value L, value s, value p, value r)
   len = strlen(value_from_lua);
 
   ret_val = caml_alloc_string(len);
-  char *retval_str = String_val(ret_val);
+  char *retval_str = (char*)String_val(ret_val);
   memcpy(retval_str, value_from_lua, len);
 
   CAMLreturn(ret_val);
@@ -408,7 +408,7 @@ value luaL_checkstring__stub(value L, value narg)
   value_from_lua = luaL_checkstring(lua_State_val(L), Int_val(narg));
   len = strlen(value_from_lua);
   ret_val = caml_alloc_string(len);
-  char *s = String_val(ret_val);
+  char *s = (char*)String_val(ret_val);
   memcpy(s, value_from_lua, len);
 
   CAMLreturn(ret_val);
@@ -466,7 +466,7 @@ value luaL_findtable__stub(value L, value idx, value fname, value szhint)
     {
         len = strlen(value_from_lua);
         ret_string = caml_alloc_string(len);
-        char *retval_str = String_val(ret_string);
+        char *retval_str = (char*)String_val(ret_string);
         memcpy(retval_str, value_from_lua, len);
 
         ret_option = caml_alloc(1, 0);
