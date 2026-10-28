@@ -3,8 +3,8 @@
 
 (rule
  (targets liblua_c_stubs.a dlllua_c_stubs.so)
- (deps (source_tree lua515))
+ (deps (file make.sh) (source_tree lua515) )
  (action (progn
-            (chdir lua515 (run make %{system}))
+            (chdir lua515 (run ../make.sh %{system}))
             (run cp lua515/src/liblua.a liblua_c_stubs.a)
             (run cp lua515/src/liblua.so dlllua_c_stubs.so))))
