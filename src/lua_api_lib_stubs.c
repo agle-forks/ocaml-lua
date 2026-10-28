@@ -239,7 +239,7 @@ static int writer_function(lua_State *L, const void *p, size_t sz, void* ud)
 
     writer_data *internal_data = (writer_data*)ud;
     buffer = caml_alloc_string(sz);
-    memcpy(String_val(buffer), p, sz);
+    memcpy((char*)String_val(buffer), p, sz);
 
     writer_status_value =
         caml_callback3( internal_data->writer_function,
