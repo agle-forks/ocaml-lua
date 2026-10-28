@@ -680,7 +680,7 @@ value lua_tolstring__stub(value L, value index)
   if (value_from_lua != NULL)
   {
     ret_val = caml_alloc_string(len);
-    char *s = String_val(ret_val);
+    char *s = (char *)String_val(ret_val);
     memcpy(s, value_from_lua, len);
   }
   else
