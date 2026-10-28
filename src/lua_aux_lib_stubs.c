@@ -212,7 +212,7 @@ static void finalize_lua_State(value L)
 
 static int default_panic(lua_State *L)
 {
-    value *default_panic_v = caml_named_value("default_panic");
+    const value *default_panic_v = caml_named_value("default_panic");
     ocaml_data *data = get_ocaml_data(L);
     return Int_val(caml_callback(*default_panic_v, data->state_value));
 }
@@ -272,7 +272,7 @@ value luaL_newstate__stub (value max_memory_size, value unit)
 
     debug(3, "luaL_newstate__stub: BEGIN\n");
 
-    value *default_panic_v = caml_named_value("default_panic");
+    const value *default_panic_v = caml_named_value("default_panic");
 
     /* alloc space for the register entry */
     ocaml_data *data = (ocaml_data*)caml_stat_alloc(sizeof(ocaml_data));
